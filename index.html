@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Student Performance Prediction System</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+
+🎓 AI Student Predictor
+
+</div>
+
+<nav>
+
+<a href="#">Home</a>
+
+<a href="#about">About</a>
+
+<a href="#predict">Prediction</a>
+
+<a href="#dashboard">Dashboard</a>
+
+<a href="#history">History</a>
+
+</nav>
+
+<button id="themeBtn">
+
+🌙
+
+</button>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-left">
+
+<h1>
+
+AI Powered
+
+<span>
+
+Student Performance Prediction System
+
+</span>
+
+</h1>
+
+<p>
+
+Predict student academic performance using a Supervised Machine Learning model trained with TensorFlow.
+
+Analyze student learning patterns and generate intelligent predictions within seconds.
+
+</p>
+
+<button onclick="document.getElementById('predict').scrollIntoView({behavior:'smooth'})">
+
+🚀 Start Prediction
+
+</button>
+
+</div>
+
+<div class="hero-right">
+
+<img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png">
+
+</div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section id="about">
+
+<h2>
+
+✨ Why Use This System?
+
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>
+
+🤖 AI Prediction
+
+</h3>
+
+<p>
+
+Uses a trained TensorFlow Neural Network to estimate student performance.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+📊 Smart Analytics
+
+</h3>
+
+<p>
+
+Interactive charts and analytics help understand academic performance.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+📄 PDF Report
+
+</h3>
+
+<p>
+
+Generate and download a complete prediction report instantly.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PROJECT STATS -->
+
+<section>
+
+<h2>
+
+📈 Project Statistics
+
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h1>
+
+1000+
+
+</h1>
+
+<h3>
+
+Students
+
+</h3>
+
+</div>
+
+<div class="card">
+
+<h1>
+
+88%
+
+</h1>
+
+<h3>
+
+Model Accuracy
+
+</h3>
+
+</div>
+
+<div class="card">
+
+<h1>
+
+TensorFlow
+
+</h1>
+
+<h3>
+
+Neural Network
+
+</h3>
+
+</div>
+
+<div class="card">
+
+<h1>
+
+&lt;1 Sec
+
+</h1>
+
+<h3>
+
+Prediction Time
+
+</h3>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PREDICTION FORM -->
+
+<section id="predict">
+
+<h2>
+
+🎓 Student Information
+
+</h2>
+
+<div class="form-container">
+
+<form id="predictionForm">
+
+    <!-- Student Name -->
+
+<input
+type="text"
+id="studentName"
+placeholder="👤 Enter Student Name"
+required>
+
+<!-- Gender -->
+
+<select id="gender">
+
+<option value="0">
+
+👩 Female
+
+</option>
+
+<option value="1">
+
+👨 Male
+
+</option>
+
+</select>
+
+<!-- Student Category -->
+
+<select id="race">
+
+<option value="0">
+
+🌍 Student Category A
+
+</option>
+
+<option value="1">
+
+🌍 Student Category B
+
+</option>
+
+<option value="2">
+
+🌍 Student Category C
+
+</option>
+
+<option value="3">
+
+🌍 Student Category D
+
+</option>
+
+<option value="4">
+
+🌍 Student Category E
+
+</option>
+
+</select>
+
+<!-- Parent Education -->
+
+<select id="education">
+
+<option value="0">
+
+🎓 Associate Degree
+
+</option>
+
+<option value="1">
+
+🎓 Bachelor's Degree
+
+</option>
+
+<option value="2">
+
+🏫 High School
+
+</option>
+
+<option value="3">
+
+🎓 Master's Degree
+
+</option>
+
+<option value="4">
+
+📚 Some College
+
+</option>
+
+<option value="5">
+
+🏫 Some High School
+
+</option>
+
+</select>
+
+<!-- Nutrition -->
+
+<select id="lunch">
+
+<option value="0">
+
+🍽️ Nutrition Support
+
+</option>
+
+<option value="1">
+
+🍽️ Standard Nutrition
+
+</option>
+
+</select>
+
+<!-- Academic Preparation -->
+
+<select id="prep">
+
+<option value="0">
+
+📘 Regular Preparation
+
+</option>
+
+<option value="1">
+
+📘 Advanced Preparation
+
+</option>
+
+</select>
+
+<!-- Reading -->
+
+<input
+type="number"
+id="reading"
+placeholder="📖 Reading Assessment Score"
+min="0"
+max="100"
+required>
+
+<!-- Writing -->
+
+<input
+type="number"
+id="writing"
+placeholder="✍️ Writing Assessment Score"
+min="0"
+max="100"
+required>
+
+<button
+type="button"
+onclick="predictMarks()">
+
+🚀 Analyze Performance
+
+</button>
+
+</form>
+
+<!-- RESULT CARD -->
+
+<div
+class="result-card"
+id="resultCard">
+
+<h2>
+
+🤖 AI Prediction Result
+
+</h2>
+
+<h1
+id="predictedMarks">
+
+--
+
+</h1>
+
+<h3
+id="grade">
+
+--
+
+</h3>
+
+<h4
+id="status">
+
+--
+
+</h4>
+
+<div class="progress">
+
+<div
+id="progressBar">
+
+0%
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ===========================
+AI DASHBOARD
+=========================== -->
+
+<section id="dashboard">
+
+<h2>
+
+📊 AI Analytics Dashboard
+
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>
+
+🧠 AI Confidence
+
+</h3>
+
+<h1 id="confidence">
+
+94%
+
+</h1>
+
+<p>
+
+Prediction Confidence
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+🎯 Model Accuracy
+
+</h3>
+
+<h1>
+
+88%
+
+</h1>
+
+<p>
+
+TensorFlow Neural Network
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+🏆 Performance
+
+</h3>
+
+<h1 id="performance">
+
+Excellent
+
+</h1>
+
+<p>
+
+Predicted Level
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+⚡ Risk Level
+
+</h3>
+
+<h1 id="risk">
+
+Low
+
+</h1>
+
+<p>
+
+Academic Risk
+
+</p>
+
+</div>
+
+</div>
+
+<br><br>
+
+<div class="dashboard">
+
+<div class="chart-box">
+
+<h3 style="text-align:center;margin-bottom:20px;">
+
+📊 Predicted Marks
+
+</h3>
+
+<canvas id="marksChart"></canvas>
+
+</div>
+
+<div class="chart-box">
+
+<h3 style="text-align:center;margin-bottom:20px;">
+
+📈 Student Performance History
+
+</h3>
+
+<canvas id="historyChart"></canvas>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+PREDICTION HISTORY
+=========================== -->
+
+<section id="history">
+
+<h2>
+
+📋 Prediction History
+
+</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Student</th>
+
+<th>Marks</th>
+
+<th>Grade</th>
+
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody id="historyTable">
+
+</tbody>
+
+</table>
+
+</section>
+
+<!-- ===========================
+MODEL INFORMATION
+=========================== -->
+
+<section>
+
+<h2>
+
+🤖 Machine Learning Model
+
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>
+
+Algorithm
+
+</h3>
+
+<p>
+
+TensorFlow Neural Network
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+Training Dataset
+
+</h3>
+
+<p>
+
+StudentsPerformance.csv
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+Training Samples
+
+</h3>
+
+<p>
+
+800 Students
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+Testing Samples
+
+</h3>
+
+<p>
+
+200 Students
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+DOWNLOAD
+=========================== -->
+
+<section class="download-section">
+
+<h2>
+
+📄 Download AI Prediction Report
+
+</h2>
+
+<p>
+
+Generate a professional PDF report containing the predicted student performance.
+
+</p>
+
+<button onclick="downloadPDF()">
+
+⬇️ Download PDF Report
+
+</button>
+
+</section>
+
+<!-- ===========================
+FOOTER
+=========================== -->
+
+<footer>
+
+<h2>
+
+🎓 AI Student Performance Prediction System
+
+</h2>
+
+<p>
+
+Developed using HTML • CSS • JavaScript • TensorFlow
+
+</p>
+
+<p>
+
+Supervised Machine Learning | Frontend Only Project
+
+</p>
+
+<p>
+
+© 2026 All Rights Reserved
+
+</p>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
